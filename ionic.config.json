@@ -1,0 +1,7 @@
+{
+  "name": "inecoapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
