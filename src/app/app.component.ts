@@ -10,6 +10,23 @@ import { StatusBar } from '@capacitor/status-bar';
 })
 export class AppComponent {
 
+  /*
+  PARA EL ICONO DE LA APP Y LA SPLASH SCREEN 2 IMÁGENES
+
+  ICONO APP 1024*1024
+  SPLASH 2732 * 2732
+
+  DIRECTORIO RAIZ CREAMOS LA SUBCARTEPA resources
+
+  generamos el iocno y la splash
+  npx @capacitor/assets generate --android
+
+  //para las dos plaformas
+  npx @capacitor/assets generate --android --ios
+
+
+  */
+
   private platform = inject(Platform)
 
   constructor() {
