@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import {App as CapacitorApp} from '@capacitor/app'
 import { StatusBar } from '@capacitor/status-bar';
+import { BackButton } from './core/back-button/back-button';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent {
   */
 
   private platform = inject(Platform)
+  private backButton = inject(BackButton)
 
   constructor() {
     //this.platform.ready()//se usaba en Cordova para "conectar" la nativa
@@ -37,7 +39,8 @@ export class AppComponent {
   async inicializarApp ()
   {
 
-    
+    //programamos la gestión del evento hacia atrás
+    this.backButton.init();
 
     if (this.platform.is('android') || this.platform.is('ios'))
     {
@@ -55,10 +58,17 @@ export class AppComponent {
       console.log("Estamos ejecutando en una web de verdad PC")
     }
 
+    //lo gestionamos en el servicio backbutton
+    /*
     CapacitorApp.addListener('backButton', ({canGoBack}) => {
       console.log(`Tocó el botón hacia atrás ${canGoBack}`)
+      //if (canGoBack)
+      //{
+        console.log('Saliendo de la app')
+        CapacitorApp.exitApp();
+      //}
     })
-
+    */
     
     //sólo salta en Android
     CapacitorApp.addListener('pause', () => {
@@ -75,6 +85,9 @@ export class AppComponent {
       console.group(`appStateChange ${isActive}`)
       if (isActive)
       {
+         if (this.platform.is('android')) {
+            StatusBar.hide(); //para borrar la status bar. cada vez que entre se repinta y debo ocultarla
+         }
         console.log(`appStateChange App en Foreground primer plano`)
       } else {
         console.log(`appStateChange App en Background segundo plano`)
