@@ -35,3 +35,16 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+//el .md es Material Design que aplican a Android y Web
+// .md ion-header {
+//     padding-top: 24px;
+//     background: red;
+// }
+
+//.ios viejas plt-ios
+
+html.plt-android ion-header {
+    padding-top: 24px;
+    background: red;
+}
