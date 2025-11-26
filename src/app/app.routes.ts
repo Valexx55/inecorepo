@@ -12,4 +12,21 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'dni',
+    loadComponent: ()=> import('./components/dni/dni.component').then((m)=>m.DniComponent)
+  },
+  {
+    path: 'gps',
+    loadComponent: ()=> import('./components/gps/gps.component').then((m)=>m.GpsComponent)
+  },
+  {
+    path: 'alumnos',
+    loadComponent: ()=> import('./components/alumnos/alumnos.component').then((m)=>m.AlumnosComponent)
+  },
+  {
+    path: 'com',
+    loadComponent: ()=> import('./components/comunica/comunica.component').then((m)=>m.ComunicaComponent)
+  }
+
 ];

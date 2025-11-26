@@ -8,6 +8,15 @@
   <ion-content>
     <ion-list>
       <!-- GENERAR DINÁMICAMENTE LAS OPCIONES DE MENÚ -->
+       @for (item of menuItems; track item.route)
+       {
+        <ion-menu-toggle auto-hide="true">
+          <ion-item button [routerLink]="item.route" routerLinkActive="selected" routerDirection="root">
+            <ion-icon slot="start" [name]="item.icon"></ion-icon>
+            <ion-label> {{item.label}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+       }
     </ion-list>
   </ion-content>
 </ion-menu>

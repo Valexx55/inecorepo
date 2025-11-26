@@ -59,6 +59,9 @@ export class AppComponent  {
       //para que la barra sea transaparente, va en negro
       await StatusBar.setBackgroundColor({color: '#00000000'})
 
+      if (this.platform.is('android')) {
+            StatusBar.hide(); //para borrar la status bar. cada vez que entre se repinta y debo ocultarla
+      }
 
     } else {
       console.log("Estamos ejecutando en una web de verdad PC")
