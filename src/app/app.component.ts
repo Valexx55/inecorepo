@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import {App as CapacitorApp} from '@capacitor/app'
 import { StatusBar } from '@capacitor/status-bar';
@@ -9,7 +9,11 @@ import { BackButton } from './core/back-button/back-button';
   templateUrl: 'app.component.html',
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
+export class AppComponent  {
+
+  //@ViewChild(IonRouterOutlet, { static: true }) routerOutlet!: IonRouterOutlet;
+  //NOTA parece que detecta bien los gestos sin necesidad de programar nada más
+
 
   /*
   PARA EL ICONO DE LA APP Y LA SPLASH SCREEN 2 IMÁGENES
@@ -35,6 +39,8 @@ export class AppComponent {
     //this.platform.ready()//se usaba en Cordova para "conectar" la nativa
     this.inicializarApp();
   }
+
+ 
 
   async inicializarApp ()
   {
