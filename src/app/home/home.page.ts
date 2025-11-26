@@ -9,7 +9,7 @@ import {bodyOutline, cardOutline, gitCompareOutline, navigateCircleOutline} from
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [CommonModule, IonHeader, IonMenu, IonToolbar, 
+  imports: [IonHeader, IonMenu, IonToolbar, 
     IonMenuToggle, IonIcon, IonContent, IonItem, IonTitle, 
     IonLabel, IonButtons, IonMenuButton, RouterLink, IonList,IonRouterLink],
   //standalone:true,//no es impresicible pero va bien
