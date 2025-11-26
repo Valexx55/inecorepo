@@ -9,6 +9,7 @@ import {
 } from '@ionic/angular/standalone';
 import { BackButtonAction } from './back-button-action';
 import { BACK_BUTTON_CONFIG } from './back-button-config';
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root',
@@ -34,33 +35,6 @@ export class BackButton {
     });
   }
 
-  ejecutarAccion(action: BackButtonAction) {
-    switch (action) {
-      case BackButtonAction.CloseModal:
-        console.log('😎 Cerrando modal ');
-        break;
-
-      case BackButtonAction.CloseMenu:
-        console.log('😎 Cerrando menu ');
-        break;
-
-      case BackButtonAction.BlockInCertainRoutes:
-        console.log('😎 Rutas protegidas no hacemos nada ');
-        break;
-
-      case BackButtonAction.NavigateBack:
-        console.log('😎 Navegando hacia atrás ');
-        break;
-
-      case BackButtonAction.ExitApp:
-        console.log('😎 Saliendo de la app ');
-        break;
-
-      case BackButtonAction.GoHome:
-        console.log('😎 Go home opción por defecto ');
-        break;
-    }
-  }
   //al ser métdo asyncrono ,se envuelve en un promesa
   async resolverAccion(canGoBack: Boolean): Promise<BackButtonAction> {
     let accion: BackButtonAction;
@@ -98,10 +72,98 @@ export class BackButton {
       }
     }
 
-    //TODO: automáticamente nos hace esto el código, nos envuelve el resultado en la promesa
+    //automáticamente nos hace esto el código, nos envuelve el resultado en la promesa
     //pero si lo queremos hacer
     //return new Promise (()=>{accion});
     //return new Promise ((bien, mal)=>{accion});
     return accion;
+  }
+
+
+  async ejecutarAccion(action: BackButtonAction) {
+    switch (action) {
+      case BackButtonAction.CloseModal:
+        (await this.modalController.getTop())?.dismiss()
+        console.log('😎 Cerrando modal ');
+        break;
+
+      case BackButtonAction.CloseMenu:
+        this.menuController.close();
+        console.log('😎 Cerrando menu ');
+        break;
+
+      case BackButtonAction.BlockInCertainRoutes:
+        //NO HAY NINGÚN ACCIÓN
+        console.log('😎 Rutas protegidas no hacemos nada ');
+        break;
+
+      case BackButtonAction.NavigateBack:
+        this.navController.back();
+        console.log('😎 Navegando hacia atrás ');
+        break;
+
+      case BackButtonAction.ExitApp:
+        //CapacitorApp.exitApp();
+        //TODO: mostrar una ventana/diálogo
+        let saltarConfirmacion = await Preferences.get({key: 'skipExitConfirm'})
+        if (saltarConfirmacion?.value)
+        {
+          console.log('El usuario quiere salir sin confirmar');
+          CapacitorApp.exitApp();
+
+        } else {
+          console.log('El usuario quiere salir confirmando');
+          let resultado =  await this.mostrarAlertaConfirmaSalir();
+          if (resultado.dontAskAgain)
+          {
+            await Preferences.set({key:'skipExitConfirm', value: 'true'})
+          }
+          if (resultado.confirmed)
+          {
+            CapacitorApp.exitApp();
+          }
+        }
+        console.log('😎 Saliendo de la app ');
+        break;
+
+      case BackButtonAction.GoHome:
+        window.location.href = BACK_BUTTON_CONFIG.homeRoute;
+        console.log('😎 Go home opción por defecto ');
+        break;
+    }
+  }
+
+  async mostrarAlertaConfirmaSalir() {
+    let mensaje =  await this.alertControlle.create({
+      header: 'Salir de la app',
+      message: '¿Seguro que quiere salir?',
+      inputs: [
+        {
+          type: 'checkbox',
+          label: ' No volver a preguntar',
+          value: 'skip'
+        }
+      ], 
+      buttons: [
+        {
+          text: 'Cancelar', 
+          role: 'cancel'
+        },
+        {
+          text: ' Salir',
+          role: 'confirm',
+        }
+      ]
+    });
+
+    await mensaje.present();
+
+    let result = await mensaje.onDidDismiss();
+
+    return {
+      confirmed: result.role === 'confirm',
+      dontAskAgain: result.data?.values?.includes('skip')
+    }
+
   }
 }

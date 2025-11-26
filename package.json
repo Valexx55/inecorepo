@@ -9,7 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint", 
+    "lint": "ng lint",
     "android": "ionic build && ionic capacitor sync android && cd android && gradlew.bat assembleDebug && adb install -r app/build/outputs/apk/debug/app-debug.apk && adb shell monkey -p io.ionic.starter 1 && cd .."
   },
   "private": true,
@@ -27,6 +27,7 @@
     "@capacitor/core": "7.4.4",
     "@capacitor/haptics": "7.0.2",
     "@capacitor/keyboard": "7.0.3",
+    "@capacitor/preferences": "^7.0.2",
     "@capacitor/status-bar": "7.0.3",
     "@ionic/angular": "^8.0.0",
     "ionicons": "^7.0.0",
