@@ -5,6 +5,7 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonContent,
 } from '@ionic/angular/standalone';
 import { MiCabeceraComponent } from 'src/app/core/mi-cabecera/mi-cabecera.component';
 import { GpsService } from 'src/app/services/gps';
@@ -20,6 +21,7 @@ import { GpsService } from 'src/app/services/gps';
     IonButton,
     IonCardTitle,
     MiCabeceraComponent,
+    IonContent
   ],
 })
 export class GpsComponent implements OnInit {
