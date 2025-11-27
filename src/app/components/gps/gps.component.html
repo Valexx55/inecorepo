@@ -1,3 +1,17 @@
-<p>
-  gps works!
-</p>
+<app-mi-cabecera titulo="GPS"></app-mi-cabecera>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Ubicación actual</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{ubicacion}}
+  </ion-card-content>
+
+</ion-card>
+<ion-button expand="block" color="primary" (click)="obtenerUbicacion()">
+  Obtener ubicación
+</ion-button>
+<ion-button expand="block" color="tertiary" (click)="abrirAjustes()">
+  Abrir ajustes del GPS
+</ion-button>

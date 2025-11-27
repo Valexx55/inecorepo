@@ -17,6 +17,7 @@ export const routes: Routes = [
     loadComponent: ()=> import('./components/dni/dni.component').then((m)=>m.DniComponent)
   },
   {
+    //TODO: poner una guarda para que no pueda acceder a este Componente si no está en móvil
     path: 'gps',
     loadComponent: ()=> import('./components/gps/gps.component').then((m)=>m.GpsComponent)
   },
