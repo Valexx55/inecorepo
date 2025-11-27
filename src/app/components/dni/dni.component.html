@@ -1,8 +1,43 @@
- <ion-header>
-    <ion-toolbar>
-      <ion-title>DNI</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <!-- contenido del Home -->
-  </ion-content>
+ <app-mi-cabecera titulo="DNI"></app-mi-cabecera>
+
+
+ <ion-content class="ion-padding">
+
+  <div class="dni-container">
+
+    <div class="titulo">{{titulo}}</div>
+    <ion-item>
+      <ion-label>NÚMERO DE DNI</ion-label>
+      <ion-input
+      type="number"
+      [(ngModel)]="numero"
+      placeholder="0"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button (click)="calcularLetra()" expand="block">
+      CALCULAR LETRA
+    </ion-button>
+
+    @if (letra)
+    {
+      <div  class ="resultado-letra">
+        SU LETRA ES {{letra}}
+      </div>
+    }
+
+    @if (lista_dnis && lista_dnis.length > 0)
+    {
+      <ion-list class="lista-dnis" [inset]=false lines="inset">
+        @for (ndni of lista_dnis; track $index)
+        {
+          <ion-item>
+            <ion-label>{{ ndni }}</ion-label>
+          </ion-item>
+        }
+      </ion-list>
+    }
+
+  </div>
+  
+</ion-content>

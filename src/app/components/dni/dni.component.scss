@@ -1,0 +1,43 @@
+/* Contenedor general con separación */
+.dni-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* separación entre elementos */
+}
+
+.dni-container ion-input {
+  text-align: center;
+}
+
+
+/* Mejor apariencia para el bloque del resultado */
+.resultado-letra {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+  margin-top: 8px;
+}
+
+/* Un poco de margen para separar la lista del resto */
+.lista-dnis {
+  margin-top: 12px;
+}
+
+/* Opcional: darle un estilo más “card” a cada item */
+ion-item {
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+}
+
+/* Botón estilizado */
+ion-button {
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+/* Título más claro (si usas el texto suelto arriba) */
+.titulo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}

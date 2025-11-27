@@ -44,6 +44,15 @@
 
 //.ios viejas plt-ios
 
+//ion header, content, menu, toolbar footer
+// son componentes extructurales que se pueden estilizar desde el exterior
+//layout global. no tiene shadow dom
+
+//por contra, si yo tengo 
+//ion-item ion-card, list, input
+//si tengo shadow dom para aplicar los estilos, tengo
+//que seleccionar su parte interna
+
 html.plt-android ion-header {
     padding-top: 24px;
     background: red;

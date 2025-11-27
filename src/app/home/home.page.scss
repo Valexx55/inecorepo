@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
+
+
+//por contra, si yo tengo 
+//ion-item ion-card, list, input
+//si tengo shadow dom para aplicar los estilos, tengo
+//que seleccionar su parte interna
+
+ion-menu ion-item::part(native) {
+  cursor: pointer;
+}
