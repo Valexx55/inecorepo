@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonRouterLink, IonMenu, IonMenuToggle, IonIcon, IonItem, IonList, IonMenuButton, IonButtons, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import {bodyOutline, cardOutline, gitCompareOutline, navigateCircleOutline} from 'ionicons/icons'
+import {bodyOutline, cardOutline, gitCompareOutline, mapOutline, navigateCircleOutline} from 'ionicons/icons'
 
 @Component({
   selector: 'app-home',
@@ -22,12 +22,13 @@ export class HomePage {
     {label: 'Alumnos', route: '/alumnos', icon: 'body-outline'},
     {label: 'Gps', route: '/gps', icon: 'navigate-circle-outline'},
     {label: 'Comunica C\'s', route: '/com', icon: 'git-compare-outline'},
+    {label: 'Mapa libre', route: '/mapas', icon: 'map-outline'}
   ]
 
   constructor() {
 
     addIcons(
-      {'card-outline':cardOutline, 'body-outline':bodyOutline, 'navigate-circle-outline':navigateCircleOutline, 'git-compare-outline':gitCompareOutline})
+      {'card-outline':cardOutline, 'body-outline':bodyOutline, 'navigate-circle-outline':navigateCircleOutline, 'git-compare-outline':gitCompareOutline, 'map-outline': mapOutline})
 
   }
 }

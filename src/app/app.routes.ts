@@ -31,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'com',
     loadComponent: ()=> import('./components/comunica/comunica.component').then((m)=>m.ComunicaComponent)
+  },
+  {
+    path: 'mapas',
+    loadComponent: ()=> import('./components/mapa/mapa.component').then((m)=>m.MapaComponent)
   }
 
 ];
