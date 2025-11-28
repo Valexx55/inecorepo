@@ -27,7 +27,7 @@ export class GpsService {
     try {
       console.log('en try get location ...')
       const pos = await Geolocation.getCurrentPosition({
-        enableHighAccuracy: false,//true
+        enableHighAccuracy: true,//false
         timeout: 7000,
       });
       return pos;
