@@ -1,5 +1,45 @@
 <app-mi-cabecera titulo="Mapas"></app-mi-cabecera>
 <ion-content>
+  <!-- control del relieve -->
+  <div id="panel-superior">
+    <ion-list>
+      <ion-item>
+        <ion-label>Relieve</ion-label>
+        <ion-button size="small" (click)="toggleRelieve()">
+          {{ relieveVisible ? 'Ocultar' : 'Mostrar'}}
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Opacidad</ion-label>
+        <ion-range min="0" max="1" step="0.05" [value]="relieveOpacity" (ionChange)="cambiarOpacidad($event)">
+
+        </ion-range>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
   <!-- aquí se dibuja el mapa cargado -->
   <div id="map"></div>
+
+  <!-- menú superpuesto con botones para alternar
+   las capas -->
+
+  <div id="control-capas" [class.abierto]="capasAbierto">
+
+    <!-- Botón principal -->
+    <button class="btn-principal" (click)="toggleCapas()">
+      Capas
+    </button>
+
+    <!-- Menú desplegable -->
+    <div class="menu-capas">
+      <ion-button size="small" expand="block" (click)="cambiarBase('osm')">OSM</ion-button>
+      <ion-button size="small" expand="block" (click)="cambiarBase('ignBase')">IGN</ion-button>
+      <ion-button size="small" expand="block" (click)="cambiarBase('pnoa')">PNOA</ion-button>
+    </div>
+
+  </div>
+
 </ion-content>
