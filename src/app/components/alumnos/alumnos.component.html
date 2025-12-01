@@ -1,11 +1,18 @@
-<app-mi-cabecera titulo="ALUMNOS"></app-mi-cabecera>
+<app-mi-cabecera titulo="ALUMNOS"
+[style.opacity]="headerOpacity"></app-mi-cabecera>
 
-<ion-content>
+<ion-content 
+[scrollEvents]="true" 
+(ionScroll)="onScroll($event)"
+[class.portrait]="isPortrait"
+[class.landscape]="!isPortrait"
+>
   @if (listaAlumnosRx) {
   <ion-list>
     @for (alumno of listaAlumnosRx; track alumno.id) {
     <ion-item>
       <ion-card>
+        <img alt="FOTO ALUMNO" src="https://randomuser.me/api/portraits/men/{{alumno.id}}.jpg" />
         <ion-card-header>
           <ion-card-title>{{alumno.nombre}}</ion-card-title>
           <ion-card-subtitle>{{alumno.edad}}</ion-card-subtitle>
