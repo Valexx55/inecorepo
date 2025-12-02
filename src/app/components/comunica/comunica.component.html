@@ -1,3 +1,13 @@
-<p>
-  comunica works!
-</p>
+<app-mi-cabecera titulo="COMUNICA C'S"></app-mi-cabecera>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>PALABRA</ion-label>
+    <ion-input type="text" [(ngModel)]="palabra" placeholder="Introduce palabra"></ion-input>
+  </ion-item>
+  <ion-button (click)="daLaVuelta()" expand="block">AL REVÉS</ion-button>
+  <ion-button (click)="limpiarTodo()" expand="block">LIMPIAR</ion-button>
+  <app-chijo [preves]="palabra_reves" (espalin)="informarPalin($event)"></app-chijo>
+  
+
+</ion-content>
