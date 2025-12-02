@@ -1,7 +1,7 @@
 # 📘 Recursos de Desarrollo 
 
 Este README contiene las referencias a webs
-de interés usadas en el proyecto.
+de interés usadas en el proyecto.  
 Además en esta ruta [se adjunta la Documentación](https://github.com/Valexx55/inecorepo/tree/master/resources/DOCU)
 
 ---
