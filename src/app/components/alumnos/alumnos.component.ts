@@ -1,6 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonItem, IonList, LoadingController } from '@ionic/angular/standalone';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonIcon, IonItem, IonList, LoadingController } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { phoneLandscape, phonePortrait } from 'ionicons/icons';
 import { Observer } from 'rxjs';
 import { MiCabeceraComponent } from 'src/app/core/mi-cabecera/mi-cabecera.component';
 import { Alumno } from 'src/app/models/alumno.model';
@@ -20,7 +23,10 @@ import { AlumnoService } from 'src/app/services/alumno';
     IonCardSubtitle, 
     IonCardContent,
     DatePipe,
-    IonItem
+    IonItem, 
+    IonFab,
+    IonFabButton, 
+    IonIcon
   ]
 })
 export class AlumnosComponent  implements OnInit {
@@ -52,8 +58,19 @@ export class AlumnosComponent  implements OnInit {
 
   constructor(private alumnoSerivce:AlumnoService, private loadingCtrl: LoadingController) { 
 
+    addIcons({'phone-landscape': phoneLandscape,'phone-portrait':phonePortrait});
   }
 
+  async cambiarOrientacion() {
+    this.isPortrait = !this.isPortrait;
+
+    if (this.isPortrait)
+    {
+      await ScreenOrientation.lock({orientation:'portrait'});
+    } else {
+      await ScreenOrientation.lock({orientation:'landscape'});
+    }
+  }
 
 
 

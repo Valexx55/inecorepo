@@ -26,4 +26,10 @@
   }
   </ion-list>
   }
+
+  <ion-fab class="solo-android" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="cambiarOrientacion()">
+      <ion-icon [name]="isPortrait ? 'phone-landscape' : 'phone-portrait' "></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

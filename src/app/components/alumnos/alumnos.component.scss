@@ -93,3 +93,49 @@ img {
 
 
 }
+
+//estilos del boton para que sólo se vean en movil
+:host-context(.plt-desktop) .solo-android {
+    display: none;
+}
+
+:host-context(.plt-android) .solo-android,
+:host-context(.plt-ios) .solo-android {
+    display: block;
+}
+
+
+//filtro por dimensiones
+/*
+
+@media (min-width: 768px) {
+  .mi-contenedor {
+    padding: 40px;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .mi-contenedor {
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
+
+/*
+
+
+ion-content {
+  @media (min-width: var(--ion-grid-md)) {
+    // tablet o escritorio
+    --padding-start: 40px;
+    --padding-end: 40px;
+  }
+
+  @media (max-width: calc(var(--ion-grid-md) - 1px)) {
+    // móvil 
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+}
+*/
