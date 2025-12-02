@@ -2,19 +2,43 @@ img {
     width: 100%;
 }
 
-//gestión de estilos con combinación
-//del estado en el componente
-/*.portrait ion-list {
+//CON ESTADO BOOLEAN DEL COMPONENTE
+/*
+.portrait ion-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background: burlywood;
+
+}
+
+.portrait ion-item::part(native) {
+    background-color: aqua;
 }
 
 .landscape ion-list {
     display: flex;
     flex-direction: row;
-}*/
-//fin estilos estado-componente
+    align-items: center;
+    background: yellow;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 24px;
+    height: 100%;
+    align-items: center;
+    padding: 0px 24px;
+}
 
+.landscape ion-item {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 250px;
+    box-sizing: border-box;
+}
+*/
+
+//PARA LA ORIENTACIÓN MEJOR ESTO
 :host-context(.plt-desktop) ion-list {
     display: flex;
     flex-direction: column;
@@ -34,11 +58,11 @@ img {
         }
 
         ion-item::part(native) {
-            background-color:aqua ;
+            background-color: aqua;
         }
     }
-    
-    
+
+
 }
 
 :host-context(.plt-android) {
@@ -62,12 +86,10 @@ img {
         ion-item {
             flex: 0 0 auto;
             width: auto;
-            min-width:  250px;
+            min-width: 250px;
             box-sizing: border-box;
         }
     }
-    
-    
+
+
 }
-
-
